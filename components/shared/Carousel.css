@@ -1,0 +1,27 @@
+.carousel {
+    background: linear-gradient(-15deg, #18181b, #ec489926);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .carousel-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+  
+  .carousel-image {
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .carousel-image img {
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+  }
