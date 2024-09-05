@@ -82,6 +82,13 @@ const TeamSection = () => {
       linkedin: "https://www.linkedin.com/in/harshbir-singh-1b37022b8",
     },
     {
+      name: "Khushi Vijay",
+      role: "Member",
+      image: "/assets/cc_core/Khushi_Vijay.jpg",
+      instagram: "Khush.sheee__",
+      linkedin: "https://www.linkedin.com/in/khushi-vijay-3765b82ab/",
+    },
+    {
       name: "Priyanka",
       role: "Member",
       image: "/assets/cc_core/Priyanka.jpg",
@@ -122,6 +129,13 @@ const TeamSection = () => {
       image: "/assets/cc_core/Anand_Pratap_Singh.jpg",
       instagram: "anandpratapsingh101",
       linkedin: "https://www.linkedin.com/in/anand-pratap-singh-b473832ba",
+    },
+    {
+      name: "Rohit Kumar",
+      role: "Member",
+      image: "/assets/cc_core/Rohit_Kumar.jpg",
+      instagram: "IITian.edit",
+      linkedin: "https://www.linkedin.com/in/rohit-kumar-1a860329b/",
     },
     {
       name: "Arpita Kumari",
@@ -260,6 +274,7 @@ const TeamSection = () => {
                 {member.instagram && (
                   <a
                     href={`https://instagram.com/${member.instagram}`}
+                    target="_blank"
                     className="text-xl hover:text-purple-200"
                   >
                     <FaInstagram />
@@ -268,6 +283,7 @@ const TeamSection = () => {
                 {member.linkedin && (
                   <a
                     href={member.linkedin}
+                    target="_blank"
                     className="text-xl hover:text-purple-200"
                   >
                     <FaLinkedin />
@@ -304,6 +320,7 @@ const TeamSection = () => {
                 {member.instagram && (
                   <a
                     href={`https://instagram.com/${member.instagram}`}
+                    target="_blank"
                     className="text-xl hover:text-purple-200"
                   >
                     <FaInstagram />
@@ -312,6 +329,7 @@ const TeamSection = () => {
                 {member.linkedin && (
                   <a
                     href={member.linkedin}
+                    target="_blank"
                     className="text-xl hover:text-purple-200"
                   >
                     <FaLinkedin />
