@@ -8,7 +8,7 @@ import { IoIosMail } from "react-icons/io";
 const Foot = () => {
   return (
     <div>
-      <Footer container className="relative bg-violet-950 bg-opacity-10 shadow-lg p-8">
+      <Footer container className="relative bg-violet-950 bg-opacity-10 shadow-lg p-6">
       
         <div className="absolute opacity-70 inset-0 backdrop-filter backdrop-blur-sm"></div> {/* Adding a blurred backdrop */}
       

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background: url("/assets/images/bg.svg") no-repeat center center fixed;
+  background: url("/assets/images/bg.svg") no-repeat fixed;
   background-size: cover; /* Cover the entire viewport */
 }
 

@@ -3,7 +3,7 @@ import { MainCarousel } from "./MainCarousel";
 function LandingSection() {
   return (
     <>
-      <div className="flex flex-col w-full justify-center items-center mt-48 px-5 md:px-12">
+      <div className="flex flex-col w-full justify-center items-center mt-48">
         <div className="flex flex-col items-center">
           <div className="text-xl font-medium text-neutral-100/[0.7] text-center">
             This is the Cultural Society, IIT Mandi

@@ -26,13 +26,13 @@ export default function Navbar() {
       </Link>
       <div className="">
         <ul className="flex justify-center gap-12 max-sm:text-base max-sm:gap-3 text-lg font-medium">
-          <Link href={"/about"}>
+          <Link href={"/showcase"}>
             <li
               className={`cursor-pointer transition  hover:text-[#AC51D2] ${
-                currentPage === "/about" ? "text-[#AC51D2]" : ""
+                currentPage === "/showcase" ? "text-[#AC51D2]" : ""
               }`}
             >
-              About
+              Showcase
             </li>
           </Link>
           <Link href={"/clubs"}>
