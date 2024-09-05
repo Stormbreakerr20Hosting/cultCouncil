@@ -3,9 +3,9 @@ import Wheel from "@/components/shared/Wheel";
 
 const page = () => {
   return (
-    <div className="flex justify-start lg:items-center max-lg:mt-24 h-full mt-24 mb-20">
-      <div className="w-full lg:w-1/2 ml-12 sm:ml-24 p-4 lg:p-0 max-md:ml-0 max-md:text-center">
-        <div className=" mb-8">
+    <div className="flex justify-start lg:items-center h-full mt-20 max-lg:mt-32">
+      <div className="w-full lg:w-2/3 ml-12 max-md:ml-0 p-4 max-md:text-center">
+        <div className="mb-8">
           <p className="text-lg lg:text-xl">
             This is the Cultural Society, IIT Mandi
           </p>
@@ -13,7 +13,7 @@ const page = () => {
             About The Council
           </h1>
         </div>
-        <p className="text-sm md:text-base lg:text-lg">
+        <p className="text-sm md:text-base lg:text-lg mb-20">
           The Cultural Council at IIT Mandi is a vibrant hub for students
           passionate about arts, culture, and creativity. It plays a pivotal
           role in fostering a diverse cultural atmosphere on campus, organizing
