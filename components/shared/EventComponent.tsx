@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { IEvent } from "@/lib/database/models/event.model";
 import { formatDateTime } from "@/lib/utils";
@@ -14,6 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { getUserById } from "@/lib/actions/user.actions";
+import { set } from "mongoose";
 
 type CardProps = {
   event: IEvent;
@@ -27,7 +29,7 @@ const truncateDescription = (
   if (!description) return "";
   const words = description.split(" ");
   if (words.length <= wordLimit) return description;
-  return words.slice(0, wordLimit).join(" ") + "...";
+  return words.slice(0, wordLimit);
 };
 
 const EventComponent = ({ event, userId }: CardProps) => {
@@ -41,24 +43,33 @@ const EventComponent = ({ event, userId }: CardProps) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [wordLimit, setWordLimit] = useState(22);
+
+  const [screen, setScreen] = useState(0);
+  const updateWordLimit = () => {
+    if (window.innerWidth < 460) {
+      setWordLimit(0);
+    } else if (window.innerWidth < 770) {
+      setWordLimit(6);
+    } else {
+      setWordLimit(22);
+    }
+  };
+  const checkAdmin = async () => {
+    if (!userId) return;
+    const user = await getUserById(userId);
+
+    if (user?.isAdmin) {
+      setIsAdmin(true);
+    }
+  };
+
   useEffect(() => {
-    const checkAdmin = async () => {
-      if (!userId) return;
-      const user = await getUserById(userId);
-      if (user?.role === "admin") {
-        setIsAdmin(true);
-      }
-    };
-    checkAdmin();
-    const updateWordLimit = () => {
-      if (window.innerWidth < 460) setWordLimit(3);
-      else if (window.innerWidth < 770) setWordLimit(6);
-      else setWordLimit(22);
-    };
     updateWordLimit();
+    checkAdmin();
+    setScreen(window.innerWidth);
     window.addEventListener("resize", updateWordLimit);
     return () => window.removeEventListener("resize", updateWordLimit);
-  }, [userId]);
+  }, []);
   return (
     <div className="flex flex-col ml-20 max-md:ml-4 max-sm:ml-0">
       <div className="flex gap-4 mb-2 mx-32 max-lg:mx-8 justify-center max-md:mr-5 items-center">
@@ -84,9 +95,9 @@ const EventComponent = ({ event, userId }: CardProps) => {
                   event.description.split(" ").length > wordLimit && (
                     <button
                       onClick={() => setOpenDialog(true)}
-                      className="text-blue-400"
+                      className="text-blue-400 max-sm:text-sm"
                     >
-                      Read More
+                      {screen < 460 ? "Read Description" : "... Read More"}
                     </button>
                   )}
               </p>
@@ -143,7 +154,7 @@ const EventComponent = ({ event, userId }: CardProps) => {
         <DialogTrigger asChild>
           <button className="hidden" />
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="rounded-sm max-sm:w-[90%]">
           <DialogHeader>
             <DialogTitle>{event.title}</DialogTitle>
             <DialogDescription>{event.description}</DialogDescription>

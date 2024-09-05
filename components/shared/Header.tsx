@@ -1,17 +1,19 @@
 "use client";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"; // Adjust based on your actual import paths
 import { usePathname } from "next/navigation";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+export default function Navbar() {
+  const [isMounted, setIsMounted] = useState(false);
+  const [currentPage, setcurrentPage] = useState("/");
 
-export default function Header() {
-  const [currentPage, setCurrentPage] = useState("");
   const pathname = usePathname();
-
   useEffect(() => {
-    setCurrentPage(pathname);
+    setIsMounted(true);
+    setcurrentPage(pathname);
   }, [pathname]);
+
   return (
     <nav className="absolute top-0 w-full z-50 flex justify-between items-center text-white px-12 max-sm:px-8 py-5">
       <Link href={"/"}>
@@ -61,17 +63,21 @@ export default function Header() {
             </li>
           </Link>
           <li>
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-            <SignedOut>
-              <Link
-                className={`cursor-pointer transition max-sm:text-base hover:text-[#AC51D2]`}
-                href="/sign-in"
-              >
-                Login
-              </Link>
-            </SignedOut>
+            {isMounted && (
+              <>
+                <SignedIn>
+                  <UserButton afterSignOutUrl="/" />
+                </SignedIn>
+                <SignedOut>
+                  <Link
+                    className="cursor-pointer transition max-sm:text-base hover:text-[#AC51D2]"
+                    href="/sign-in"
+                  >
+                    Login
+                  </Link>
+                </SignedOut>
+              </>
+            )}
           </li>
         </ul>
       </div>

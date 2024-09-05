@@ -2,9 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background: url("/assets/images/bg.svg") no-repeat top fixed;
-  background-size: cover;
+  background: url("/assets/images/bg.svg") no-repeat center center fixed;
+  background-size: cover; /* Cover the entire viewport */
 }
+
+/* Media query for mobile screens */
+@media (max-width: 767px) {
+  body {
+    background: url("/assets/images/bg.svg") no-repeat fixed;
+  }
+}
+
 
 @layer base {
   :root {

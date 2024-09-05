@@ -46,7 +46,7 @@ export const DeleteConfirmation = ({ eventId }: { eventId: string }) => {
           <AlertDialogAction
             onClick={() =>
               startTransition(async () => {
-                await deleteEvent({ eventId, path: '/events' });
+                await deleteEvent({ eventId, path: "/events" });
                 toast.success("Event deleted successfully");
               })
             }

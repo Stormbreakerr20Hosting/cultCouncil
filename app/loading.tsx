@@ -1,4 +1,6 @@
-import ClipLoader from "react-spinners/ClipLoader";
+import React from "react";
+import Lottie from "lottie-react";
+import animationData from "@/public/assets/loader.json";
 
 const override = {
   display: "block",
@@ -11,13 +13,22 @@ type LoadingProps = {
 
 const Loading = ({ loading }: LoadingProps) => {
   return (
-    <ClipLoader
-      color="rgb(59, 130, 246)"
-      loading={loading}
-      cssOverride={override}
-      size={150}
-      aria-label="Loading Spinner"
-    />
+    <div>
+      {loading && (
+        <>
+          <Lottie
+            animationData={animationData}
+            loop={true}
+            style={{
+              height: 150,
+              width: 150,
+              margin: "50px auto",
+              display: "block",
+            }}
+          />
+        </>
+      )}
+    </div>
   );
 };
 

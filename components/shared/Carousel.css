@@ -1,12 +1,12 @@
 .carousel {
-    background: linear-gradient(-15deg, #18181b, #ec489926);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    transition: all;
   }
-  
+
   .carousel-images {
     display: flex;
     align-items: center;

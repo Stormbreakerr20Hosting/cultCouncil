@@ -1,6 +1,7 @@
+'use client';
 import EventForm from "@/components/shared/EventForm";
 import { getEventById } from "@/lib/actions/event.actions";
-import { auth } from "@clerk/nextjs/server";
+import { useUser } from "@clerk/clerk-react";
 
 type UpdateEventProps = {
   params: {
@@ -9,9 +10,8 @@ type UpdateEventProps = {
 };
 
 const UpdateEvent = async ({ params: { id } }: UpdateEventProps) => {
-  const { sessionClaims } = auth();
-
-  const userId = sessionClaims?.userId as string;
+  const user = useUser();
+  const userId = user.user?.publicMetadata.userId as string;
   const event = await getEventById(id);
 
   return (

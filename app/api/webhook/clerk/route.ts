@@ -64,8 +64,7 @@ export async function POST(req: Request) {
     const { id, email_addresses, first_name, image_url } = evt.data;
 
     const isadmin =
-      email_addresses[0].email_address === "b22115@students.iitmandi.ac.in";
-
+      email_addresses[0].email_address === "cultural_secretary@students.iitmandi.ac.in";
     const user = {
       clerkId: id,
       email: email_addresses[0].email_address,

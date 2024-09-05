@@ -3,30 +3,31 @@ import Wheel from "@/components/shared/Wheel";
 
 const page = () => {
   return (
-    <div className="flex justify-start lg:items-center max-lg:mt-24 h-full">
+    <div className="flex justify-start lg:items-center max-lg:mt-24 h-full mt-24 mb-20">
       <div className="w-full lg:w-1/2 ml-12 sm:ml-24 p-4 lg:p-0 max-md:ml-0 max-md:text-center">
         <div className=" mb-8">
           <p className="text-lg lg:text-xl">
             This is the Cultural Society, IIT Mandi
           </p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold">
-            About the council
+            About The Council
           </h1>
         </div>
         <p className="text-sm md:text-base lg:text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-          placerat mauris at magna pellentesque cursus. Vivamus elementum tellus
-          id odio gravida, ac hendrerit felis dictum. Duis diam mi, ornare vel
-          varius et, placerat et ligula. Nullam id sapien ullamcorper, cursus
-          quam at, dapibus quam. Suspendisse et tortor vel risus sodales
-          tincidunt. Proin ex felis, iaculis vel hendrerit in, tempor sit amet
-          tortor. Aliquam et odio facilisis, commodo erat et, eleifend est.
-          Donec in venenatis lacus. Nullam ut tristique magna. Proin lacinia
-          pretium augue ac malesuada.
+          The Cultural Council at IIT Mandi is a vibrant hub for students
+          passionate about arts, culture, and creativity. It plays a pivotal
+          role in fostering a diverse cultural atmosphere on campus, organizing
+          events that range from music and dance performances to drama and
+          literary activities. The council provides a platform for students to
+          showcase their talents, learn new skills, and engage in cultural
+          exchanges, thereby enriching the campus experience. By promoting
+          various cultural activities, the Cultural Council helps in building a
+          close-knit community where students can explore their interests and
+          celebrate the rich diversity of cultural expressions.
         </p>
       </div>
 
-      <Wheel />
+      {/* <Wheel /> */}
     </div>
   );
 };

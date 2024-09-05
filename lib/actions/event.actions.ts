@@ -38,7 +38,8 @@ type EventParam = {
 };
 const isOverlapping = async ({ event, eventId }: EventParam) => {
   const { startDateTime, endDateTime } = event;
-  const excludedId = eventId ? eventId : "";
+  const excludedId = eventId ? eventId : null;
+  console.log(excludedId);
   const events = await Event.find({
     $and: [
       {
@@ -62,6 +63,7 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
     await connectToDatabase();
 
     const organizer = await User.findById(userId);
+    console.log(organizer);
     if (!organizer) throw new Error("Organizer not found");
 
     const Overlap = await isOverlapping({ event });
@@ -140,7 +142,10 @@ export async function deleteEvent({ eventId, path }: DeleteEventParams) {
     await connectToDatabase();
 
     const deletedEvent = await Event.findByIdAndDelete(eventId);
-    if (deletedEvent) revalidatePath(path);
+
+    if (deletedEvent) {
+      revalidatePath(path);
+    }
   } catch (error) {
     handleError(error);
   }

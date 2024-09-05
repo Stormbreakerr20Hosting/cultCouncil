@@ -1,11 +1,12 @@
+'use client';
 import Timeline from "@/components/shared/Timeline";
-import { auth } from "@clerk/nextjs/server";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { SignedIn } from "@clerk/nextjs";
+import { useUser } from "@clerk/clerk-react";
 const Page = () => {
-  const { sessionClaims } = auth();
-  const userId = sessionClaims?.userId as string;
+  const user = useUser();
+  const userId = user.user?.publicMetadata.userId as string;
   return (
     <div className="w-full mt-12">
       <div className="flex flex-col justify-center items-center mb-24">
@@ -13,7 +14,7 @@ const Page = () => {
           This is the Cultural Society, IIT Mandi
         </div>
         <h1 className="text-6xl max-w-screen-md font-semibold text-center leading-tight">
-          Our events
+          Our Events
         </h1>
         <SignedIn>
           <Link href={"/events/create"}>
