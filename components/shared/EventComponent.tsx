@@ -81,7 +81,7 @@ const EventComponent = ({ event, userId }: CardProps) => {
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [wordLimit, setWordLimit] = useState(22);
-  const [logo, setLogo] = useState(null);
+  const [logo, setLogo] = useState<string | null>(null);
 
   const [screen, setScreen] = useState(0);
   const updateWordLimit = () => {
@@ -101,11 +101,15 @@ const EventComponent = ({ event, userId }: CardProps) => {
       setIsAdmin(true);
     }
   };
-
   const updateClub = async () => {
     const organizer = await getUserById(event.organizer?._id);
-    setLogo(() => clubs.find((club) => club.email === organizer.email)?.image);
+
+    const clubImage =
+      clubs.find((club) => club.email === organizer.email)?.image ?? null;
+
+    setLogo(clubImage);
   };
+
   useEffect(() => {
     updateWordLimit();
     checkAdmin();
