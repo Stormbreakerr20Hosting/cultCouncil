@@ -15,7 +15,7 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <nav className="absolute top-0 w-full z-50 flex justify-between items-center text-white px-12 max-sm:px-8 py-5">
+    <nav className="absolute top-0 w-full z-50 flex justify-between items-center text-white px-12 max-sm:px-3 py-5">
       <Link href={"/"}>
         <Image
           alt="CCLogo"

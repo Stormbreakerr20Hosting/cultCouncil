@@ -13,7 +13,6 @@ body {
   }
 }
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -86,7 +85,7 @@ body {
 }
 
 body {
-  @apply text-neutral-100 relative m-0 p-0
+  @apply text-neutral-100 relative m-0 p-0;
 }
 
 .filter-grey {
@@ -262,7 +261,7 @@ body {
 .cl-formButtonPrimary:hover,
 .cl-formButtonPrimary:focus,
 .cl-formButtonPrimary:active {
-  background-color: #705CF7
+  background-color: #705cf7;
 }
 
 /* ========================================== REACT-DATEPICKER STYLES */

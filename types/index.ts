@@ -5,6 +5,7 @@ export type CreateUserParams = {
   email: string;
   photo: string;
   isAdmin: boolean;
+  isClub: boolean;
 };
 export type UpdateUserParams = {
   clubName: string | null;

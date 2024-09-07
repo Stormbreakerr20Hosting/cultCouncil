@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { IEvent } from "@/lib/database/models/event.model";
 import { formatDateTime } from "@/lib/utils";
-import { ClubsLogo } from "@/lib/utils";
 import Image from "next/image";
 import { DeleteConfirmation } from "./DeleteConfirmation";
 import Link from "next/link";
@@ -15,12 +14,54 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { getUserById } from "@/lib/actions/user.actions";
-import { set } from "mongoose";
 
 type CardProps = {
   event: IEvent;
   userId: string;
 };
+
+const clubs = [
+  {
+    name: "Drama",
+    email: "dramaclub@students.iitmandi.ac.in",
+    image: "/assets/logo/drama1.svg",
+  },
+  {
+    name: "UDC",
+    email: "danceclub@students.iitmandi.ac.in",
+    image: "/assets/logo/udc1.svg",
+  },
+  {
+    name: "Designauts",
+    email: "designauts@students.iitmandi.ac.in",
+    image: "/assets/logo/designauts1.svg",
+  },
+  {
+    name: "PMC",
+    email: "pmc@students.iitmandi.ac.in",
+    image: "/assets/logo/pmc.svg",
+  },
+  {
+    name: "Artgeeks",
+    email: "artgeeks@students.iitmandi.ac.in",
+    image: "/assets/logo/artgeeks.svg",
+  },
+  {
+    name: "Music",
+    email: "musicclub@students.iitmandi.ac.in",
+    image: "/assets/logo/music1.svg",
+  },
+  {
+    name: "SPICMACAY",
+    email: "spicmacay@students.iitmandi.ac.in",
+    image: "/assets/logo/spicmacay.svg",
+  },
+  {
+    name: "Cultural Council",
+    email: "cultural_secretary@students.iitmandi.ac.in",
+    image: "/assets/images/CCLogo.png",
+  },
+];
 
 const truncateDescription = (
   description: string | undefined,
@@ -33,12 +74,11 @@ const truncateDescription = (
 };
 
 const EventComponent = ({ event, userId }: CardProps) => {
-  const isEventCreator = userId === event.organizer._id.toString();
-  type ClubNames = keyof typeof ClubsLogo;
+  const isEventCreator = userId ? userId === event.organizer?._id.toString() : false;
 
-  const clubName = event.organizer.clubName as ClubNames;
-  const clubLogo = ClubsLogo[clubName];
-
+  const [club, setClub] = useState<
+    { name: string; email: string; image: string } | undefined
+  >(undefined);
   const [openDialog, setOpenDialog] = useState(false);
 
   const [isAdmin, setIsAdmin] = useState(false);
@@ -58,6 +98,7 @@ const EventComponent = ({ event, userId }: CardProps) => {
     if (!userId) return;
     const user = await getUserById(userId);
 
+    setClub(clubs.find((club) => club.email === user?.email));
     if (user?.isAdmin) {
       setIsAdmin(true);
     }
@@ -74,11 +115,13 @@ const EventComponent = ({ event, userId }: CardProps) => {
     <div className="flex flex-col ml-20 max-md:ml-4 max-sm:ml-0">
       <div className="flex gap-4 mb-2 mx-32 max-lg:mx-8 justify-center max-md:mr-5 items-center">
         <div className="flex-shrink-0 max-sm:hidden">
-          <img
-            src={event.imageUrl}
-            alt={event.title}
-            className="w-48 h-48 max-md:w-36 max-md:h-36 rounded-xl object-cover"
-          />
+          {event.imageUrl && (
+            <img
+              src={event.imageUrl}
+              alt={event.title}
+              className="w-48 h-48 max-md:w-36 max-md:h-36 rounded-xl object-cover"
+            />
+          )}
         </div>
         <div className="bg-purple-950 bg-opacity-35 p-4 border-2 border-white rounded-xl flex-grow h-48 max-md:h-36 overflow-hidden relative">
           <div className="flex flex-col justify-between h-full">
@@ -87,7 +130,9 @@ const EventComponent = ({ event, userId }: CardProps) => {
                 <h2 className="text-xl md:text-2xl font-semibold text-white">
                   {event.title}
                 </h2>
-                <img src={clubLogo} alt={clubName} className="h-6 md:h-8" />
+                {club?.image && (
+                  <img src={club?.image} alt={""} className="h-6 md:h-8" />
+                )}
               </div>
               <p className="text-neutral-400 mt-2 max-md:mt-0">
                 {truncateDescription(event.description, wordLimit)}

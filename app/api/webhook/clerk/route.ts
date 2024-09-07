@@ -1,12 +1,8 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { clerkClient, WebhookEvent } from "@clerk/nextjs/server";
-
-import {
-  createUser,
-  updateUser,
-  deleteUser,
-} from "@/lib/actions/user.actions";
+import { getClubNameByEmail } from "@/lib/actions/club.action";
+import { createUser, updateUser, deleteUser } from "@/lib/actions/user.actions";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -64,13 +60,18 @@ export async function POST(req: Request) {
     const { id, email_addresses, first_name, image_url } = evt.data;
 
     const isadmin =
-      email_addresses[0].email_address === "cultural_secretary@students.iitmandi.ac.in";
+      email_addresses[0].email_address ===
+      "cultural_secretary@students.iitmandi.ac.in";
+
+    const isClub =
+      getClubNameByEmail(email_addresses[0].email_address) !== null;
     const user = {
       clerkId: id,
       email: email_addresses[0].email_address,
       clubName: first_name,
       isAdmin: isadmin,
       photo: image_url,
+      isClub,
     };
 
     const newUser = await createUser(user);

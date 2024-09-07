@@ -19,6 +19,8 @@
     "@radix-ui/react-hover-card": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@react-three/drei": "^9.112.0",
+    "@react-three/fiber": "^8.17.6",
     "@uploadthing/react": "^6.7.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -48,6 +50,8 @@
     "svix": "^1.28.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.168.0",
+    "three-rounded-box": "^0.1.1",
     "uploadthing": "^6.13.2",
     "zod": "^3.23.8"
   },

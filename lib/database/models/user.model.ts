@@ -13,6 +13,7 @@ const UserSchema = new Schema({
   clubName: { type: String, required: true, unique: true },
   photo: { type: String, required: true },
   isAdmin: { type: Boolean, default: false },
+  isClub: { type: Boolean, default: false },
 });
 
 const User = models.User || model("User", UserSchema);

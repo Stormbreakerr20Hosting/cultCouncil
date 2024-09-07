@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import { Card } from "@/components/ui/card";
 import {
   Carousel,
@@ -10,14 +9,11 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
-const images = [
-  "/assets/home/pic1.jpeg",
-  "/assets/home/pic2.jpeg",
-  "/assets/home/pic3.jpeg",
-  "/assets/home/pic4.jpeg",
-  "/assets/home/pic5.JPG",
-];
-export function MainCarousel() {
+interface MainCarouselProps {
+  images: string[];
+}
+
+export function MainCarousel({ images }: MainCarouselProps) {
   return (
     <Carousel className="w-full shadow-2xl">
       <CarouselContent>

@@ -19,6 +19,13 @@ const TeamSection = () => {
       linkedin: "https://www.linkedin.com/in/pratim-kundu-07258332/",
     },
     {
+      name: "Aritra Boral",
+      role: "Event Head",
+      image: "/assets/cc_core/Aritra_Boral_IIT_Mandi.jpg",
+      instagram: "lucifer_morningstar_06660",
+      linkedin: "https://www.linkedin.com/in/aritra-boral",
+    },
+    {
       name: "Nishchay",
       role: "Member",
       image: "/assets/cc_core/Nishchay_IIT_Mandi.jpg",
@@ -39,13 +46,7 @@ const TeamSection = () => {
       instagram: "skd.arya18",
       linkedin: "https://www.linkedin.com/in/aryan0singh/",
     },
-    {
-      name: "Aritra Boral",
-      role: "Member",
-      image: "/assets/cc_core/Aritra_Boral_IIT_Mandi.jpg",
-      instagram: "lucifer_morningstar_06660",
-      linkedin: "https://www.linkedin.com/in/aritra-boral",
-    },
+    
     {
       name: "Gargi Chauhan",
       role: "Member",

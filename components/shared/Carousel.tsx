@@ -10,21 +10,22 @@ import Image from "next/image";
 const clubs = [
   {
     name: "UDC",
-    image: "/assets/logo/udc.svg",
+    image: "/assets/logo/udc1.svg", 
     description:
       "UDC is a vibrant community of passionate dancers, offering workshops, performances, and competitions. We nurture talent, foster creativity, and bring together dance enthusiasts of all skill levels.",
     color: "23,48,43,0.5",
   },
+
   {
     name: "PMC",
     image: "/assets/logo/pmc.svg",
     description:
-      "The Photography and Moviemaking Club (PMC) at IIT Mandi is for visual storytellers. It has two segments: Shutterbugs for photography and Perception for filmmaking, where creativity meets the art of capturing moments.",
+      "The Photography and Moviemaking Club (PMC) at IIT Mandi is for visual storytellers. It has two segments: Shutterbugs for photography and Perception for filmmaking.",
     color: "35,38,44,0.5",
   },
   {
     name: "Drama Club",
-    image: "/assets/logo/drama.jpg",
+    image: "/assets/logo/drama1.svg",
     description:
       "Step into the spotlight with Gustakh Saale, IIT Mandi’s Drama Club! 🎭 Whether you’re an actor, writer, or theater enthusiast, this is your stage to shine with captivating performances and behind-the-scenes magic!",
     color: "29,39,59,0.5",
@@ -33,26 +34,26 @@ const clubs = [
     name: "ArtGeeks",
     image: "/assets/logo/artgeeks.svg",
     description:
-      "We are a community of artists from various academic years, dedicated to elevating art to unprecedented heights. ArtGeeks serves as a creative sanctuary where we come together to express ourselves and bring ideas to life on canvas.",
+      "We are a community of artists at IIT Mandi, dedicated to elevating art to unprecedented heights. ArtGeeks serves as a creative sanctuary where we come together to express ourselves and bring ideas to life on canvas.",
     color: "0,214,243,0.2",
   },
   {
     name: "Designauts",
-    image: "/assets/images/designauts.jpeg",
+    image: "/assets/logo/designauts1.svg",
     description:
-      "Designauts is IIT Mandi’s hub for design enthusiasts! From graphic design to product innovation, we explore it all with hands-on workshops, projects, and guest speakers. Unleash your creativity and collaborate with like-minded designers!",
+      "Designauts is IIT Mandi’s hub for design enthusiasts! From graphic design to product innovation, we explore it all with hands-on workshops, projects, and guest speakers. Thinking Made Visual",
     color: "53,31,59,0.5",
   },
   {
     name: "SPIC MACAY",
-    image: "/assets/logo/spicmacay.jpg",
+    image: "/assets/logo/spicmacay.svg",
     description:
-      "The Society for the Promotion of Indian Classical Music And Culture Amongst Youth (SPIC MACAY) is a youth movement dedicated to promoting Indian cultural heritage through classical music, dance, folk arts, yoga, meditation, and crafts.",
+      "The Society for the Promotion of Indian Classical Music And Culture Amongst Youth (SPIC MACAY) is a youth movement dedicated to promoting Indian cultural heritage.",
     color: "57,48,28,0.5",
   },
   {
     name: "Music Club",
-    image: "/assets/logo/music.svg",
+    image: "/assets/logo/music1.svg",
     description:
       "The Music Club of IIT Mandi is a vibrant community fostering musical talent, offering a platform for students to explore, perform, and enhance their musical skills through events, workshops, and collaborations.",
     color: "55,31,45,0.5",
