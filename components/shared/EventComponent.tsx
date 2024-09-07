@@ -74,15 +74,14 @@ const truncateDescription = (
 };
 
 const EventComponent = ({ event, userId }: CardProps) => {
-  const isEventCreator = userId ? userId === event.organizer?._id.toString() : false;
-
-  const [club, setClub] = useState<
-    { name: string; email: string; image: string } | undefined
-  >(undefined);
+  const isEventCreator = userId
+    ? userId === event.organizer?._id.toString()
+    : false;
   const [openDialog, setOpenDialog] = useState(false);
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [wordLimit, setWordLimit] = useState(22);
+  const [logo, setLogo] = useState(null);
 
   const [screen, setScreen] = useState(0);
   const updateWordLimit = () => {
@@ -98,15 +97,19 @@ const EventComponent = ({ event, userId }: CardProps) => {
     if (!userId) return;
     const user = await getUserById(userId);
 
-    setClub(clubs.find((club) => club.email === user?.email));
     if (user?.isAdmin) {
       setIsAdmin(true);
     }
   };
 
+  const updateClub = async () => {
+    const organizer = await getUserById(event.organizer?._id);
+    setLogo(() => clubs.find((club) => club.email === organizer.email)?.image);
+  };
   useEffect(() => {
     updateWordLimit();
     checkAdmin();
+    updateClub();
     setScreen(window.innerWidth);
     window.addEventListener("resize", updateWordLimit);
     return () => window.removeEventListener("resize", updateWordLimit);
@@ -130,9 +133,7 @@ const EventComponent = ({ event, userId }: CardProps) => {
                 <h2 className="text-xl md:text-2xl font-semibold text-white">
                   {event.title}
                 </h2>
-                {club?.image && (
-                  <img src={club?.image} alt={""} className="h-6 md:h-8" />
-                )}
+                {logo && <img src={logo} alt={""} className="h-6 md:h-8" />}
               </div>
               <p className="text-neutral-400 mt-2 max-md:mt-0">
                 {truncateDescription(event.description, wordLimit)}
